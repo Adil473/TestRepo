@@ -3,8 +3,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from sqlalchemy import create_engine
 # Replace with your Screener.in login credentials
-# email = "vgjmunq5q@rskfc.com"
-# password = "2B00A2E5"
+email = "vgjmunq5q@rskfc.com"
+password = "2B00A2E5"
 # Start a session
 session = requests.Session()
 # Get the login page to retrieve the CSRF token
