@@ -42,7 +42,8 @@ if response.url == "https://www.screener.in/dash/":
         table = soup.find('table' , {'class': 'data-table responsive-text-nowrap'})
 
         headers = [th.text.strip() for th in table.find_all('th')]
-
+        headers.insert(0,'params')
+        print(headers)
         rows = table.find_all('tr')
         row_data = []
 
