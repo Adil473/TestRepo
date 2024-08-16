@@ -57,7 +57,7 @@ if response.url == "https://www.screener.in/dash/":
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
 
-        db_string = "postgresql+psycopg2://concourse_user:concourse_pass@192.168.1.103:5432/postgres"
+        db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
  
         # Create SQLAlchemy engine
         engine = create_engine(db_string)
