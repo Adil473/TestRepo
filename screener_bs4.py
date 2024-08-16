@@ -43,7 +43,7 @@ if response.url == "https://www.screener.in/dash/":
         table = section.find('table' , {'class': 'data-table responsive-text-nowrap'})
 
         headers = [th.text.strip() for th in table.find_all('th')]
-        headers[0] = 'params'
+        headers[0] = 'Dates'
         print(headers)
         rows = table.find_all('tr')
         row_data = []
@@ -57,6 +57,7 @@ if response.url == "https://www.screener.in/dash/":
         df = pd.DataFrame(row_data , columns=headers)
         # print(df)
         df = df.transpose()
+        df.columns = df_table.iloc[0]
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
 
