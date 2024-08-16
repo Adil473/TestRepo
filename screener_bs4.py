@@ -39,7 +39,8 @@ if response.url == "https://www.screener.in/dash/":
         print("Reliance data retrieved successfully")
         soup = BeautifulSoup(search_response.content, 'html.parser')
 
-        table = soup.find('table' , {'class': 'data-table responsive-text-nowrap'})
+        section = soup.find('section' , {'id': 'profit-loss'})
+        table = section.find('table' , {'class': 'data-table responsive-text-nowrap'})
 
         headers = [th.text.strip() for th in table.find_all('th')]
         headers[0] = 'params'
@@ -54,6 +55,8 @@ if response.url == "https://www.screener.in/dash/":
         print(row_data)
 
         df = pd.DataFrame(row_data , columns=headers)
+        # print(df)
+        df.transpose()
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
 
