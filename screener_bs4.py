@@ -66,7 +66,7 @@ if response.url == "https://www.screener.in/dash/":
         engine = create_engine(db_string)
  
         # Assuming df is your DataFrame
-        df.to_sql('profit_loss_table_data', con=engine, index=False, if_exists='replace')
+        df.to_sql('profit_loss_table_data', con=engine, index=True, if_exists='replace')
         print("data written successfully")
 
         
