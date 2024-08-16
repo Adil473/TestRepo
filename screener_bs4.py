@@ -51,12 +51,13 @@ if response.url == "https://www.screener.in/dash/":
             cols = row.find_all('td')
             cols = [col.text.strip() for col in cols]
             row_data.append(cols)
+        print(row_data)
 
         df = pd.DataFrame(row_data , columns=headers)
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
 
-        db_string = "postgresql://concourse_user:concourse_pass@192.168.1.103/postgres"
+        db_string = "postgresql+psycopg2://concourse_user:concourse_pass@192.168.1.103:5432/postgres"
  
         # Create SQLAlchemy engine
         engine = create_engine(db_string)
