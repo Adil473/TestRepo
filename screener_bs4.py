@@ -56,7 +56,7 @@ if response.url == "https://www.screener.in/dash/":
 
         df = pd.DataFrame(row_data , columns=headers)
         # print(df)
-        df.transpose()
+        df = df.transpose()
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
 
