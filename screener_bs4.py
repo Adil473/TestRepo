@@ -56,10 +56,10 @@ if response.url == "https://www.screener.in/dash/":
 
         df = pd.DataFrame(row_data , columns=headers)
         # print(df)
-        df = df.transpose()
-        # df.columns = df.iloc[0]
+        # df = df.transpose()
+        df.columns = df.iloc[0]
         
-        df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
+        # df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
         print(df.columns)
         df = df[1:]
         print(df)
