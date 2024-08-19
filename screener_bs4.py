@@ -64,9 +64,9 @@ if response.url == "https://www.screener.in/dash/":
         # df = df[1:]
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
-        for i in df.iloc[:,1:].columns:
-           df[i] = df[i].str.replace(',','').str.replace('%','').apply(eval)
-           print("Row data : ",df[i])
+        # for i in df.iloc[:,1:].columns:
+        #    df[i] = df[i].str.replace(',','').str.replace('%','').apply(eval)
+        #    print("Row data : ",df[i])
 
         db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
  
