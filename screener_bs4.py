@@ -59,11 +59,14 @@ if response.url == "https://www.screener.in/dash/":
         df = df.transpose()
         # df.columns = df.iloc[0]
         
-        df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
+        df.columns = ["Date","Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
         print(df.columns)
         df = df[1:]
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
+        for i in df.iloc[:,1:].columns:
+        df[i] = df[i].str.replace(',','').str.replace('%','').apply(eval)
+        print("Row data : ",df[i])
 
         db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
  
@@ -71,7 +74,7 @@ if response.url == "https://www.screener.in/dash/":
         engine = create_engine(db_string)
  
         # Assuming df is your DataFrame
-        df.to_sql('profit_loss_table_data', con=engine, index=True, if_exists='replace')
+        df.to_sql('profit_loss_table_data', con=engine, index=False, if_exists='replace')
         print("data written successfully")
 
         
