@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 from sqlalchemy import create_engine
+from sqlalchemy import text
+
 # Replace with your Screener.in login credentials
 email = "vgjmunq5q@rskfc.com"
 password = "2B00A2E5"
