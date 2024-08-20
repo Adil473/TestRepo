@@ -97,7 +97,7 @@ if response.url == "https://www.screener.in/dash/":
         )
         metadata.create_all(engine)
         # write into table
-        df.to_sql('profit_loss' , engine , if_exists='append' , index=True)
+        df.to_sql('profit_loss' , con=engine , if_exists='append' , index=True , index_label='year')
 
         # try:
         #    df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
