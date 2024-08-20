@@ -62,7 +62,7 @@ if response.url == "https://www.screener.in/dash/":
         # df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
         print(df.columns)
         df = df[1:]
-        df = df.withColumn("Stock Name" , lit("reliance"))
+        df["stock name"] = "reliance"
         print(df)
         # df.to_csv('profit_and_loss.csv' , index=False)
         # for i in df.iloc[:,1:].columns:
