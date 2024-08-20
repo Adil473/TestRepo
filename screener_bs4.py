@@ -60,9 +60,9 @@ if response.url == "https://www.screener.in/dash/":
         df = pd.DataFrame(row_data , columns=headers)
         # print(df)
         df = df.transpose()
-        df.columns = df.iloc[0]
+        # df.columns = df.iloc[0]
         
-        # df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout" ]
+        df.columns = ["Sales","Expenses","Operating Profit","OPM" ,"Other Income", "Interest" , "Depreciation" , "Profit before tax" , "Tax" , "Net Profit" , "EPS in Rs" ,  "Dividend Payout"]
         print(df.columns)
         df = df[1:]
         df["stock name"] = "reliance"
@@ -81,18 +81,18 @@ if response.url == "https://www.screener.in/dash/":
         metadata = MetaData()
         my_table = Table('profit_loss' , metadata , 
                         Column('year',  Integer, primary_key=True ) , 
-                        Column('Sales +' , String),
-                        Column('Expenses +' , String),
+                        Column('Sales' , String),
+                        Column('Expenses' , String),
                         Column('Operating Profit' , String),
-                        Column('OPM %' , String),
-                        Column('Other Income +' , String),
+                        Column('OPM' , String),
+                        Column('Other Income' , String),
                         Column('Interest' , String),
                         Column('Depreciation' , String),
                         Column('Profit before tax' , String),
-                        Column('Tax %' , String),
-                        Column('Net Profit +' , String),
+                        Column('Tax' , String),
+                        Column('Net Profit' , String),
                         Column('EPS in Rs' , String),
-                        Column('Dividend Payout %' , String),
+                        Column('Dividend Payout' , String),
                         Column('stock name' , String),
         )
         metadata.create_all(engine)
