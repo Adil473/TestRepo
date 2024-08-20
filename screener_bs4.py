@@ -97,20 +97,20 @@ if response.url == "https://www.screener.in/dash/":
         )
         metadata.create_all(engine)
         # write into table
-        df.to_sql('profit_loss' , engine , if_exists='append' , index=False)
+        df.to_sql('profit_loss' , engine , if_exists='append' , index=True)
 
-        try:
-           df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
-           with engine.connect() as connection:
-              alter_table_sql = """
-               ALTER TABLE profit_loss_data ADD PRIMARY KEY (year);
-              """
-              connection.execute(text(alter_table_sql))
-           print("Data saved to MySQL with id column set as primary key")
-        except SQLAlchemyError as e:
-           print(f"Error: {e}")
-        finally:
-           engine.dispose()
+        # try:
+        #    df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
+        #    with engine.connect() as connection:
+        #       alter_table_sql = """
+        #        ALTER TABLE profit_loss_data ADD PRIMARY KEY (year);
+        #       """
+        #       connection.execute(text(alter_table_sql))
+        #    print("Data saved to MySQL with id column set as primary key")
+        # except SQLAlchemyError as e:
+        #    print(f"Error: {e}")
+        # finally:
+        #    engine.dispose()
        
         # Assuming df is your DataFrame
         # df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace')
