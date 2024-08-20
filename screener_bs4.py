@@ -80,7 +80,7 @@ if response.url == "https://www.screener.in/dash/":
            df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
            with engine.connect() as connection:
               alter_table_sql = """
-               ALTER TABLE profit_loss_data ADD PRIMARY KEY ('year');
+               ALTER TABLE profit_loss_data ADD PRIMARY KEY (year);
               """
               connection.execute(text(alter_table_sql))
            print("Data saved to MySQL with id column set as primary key")
