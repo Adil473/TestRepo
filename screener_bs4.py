@@ -68,7 +68,7 @@ if response.url == "https://www.screener.in/dash/":
         #    df[i] = df[i].str.replace(',','').str.replace('%','').apply(eval)
         #    print("Row data : ",df[i])
 
-        db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
+        db_string = "postgresql+psycopg2://postgres:password@localhost:5432/sourcedb"
  
         # Create SQLAlchemy engine
         engine = create_engine(db_string)
