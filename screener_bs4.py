@@ -3,6 +3,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from sqlalchemy import create_engine
 from sqlalchemy import text
+from sqlalchemy import Table , Column , Integer , String , MetaData
 
 # Replace with your Screener.in login credentials
 email = "vgjmunq5q@rskfc.com"
@@ -75,6 +76,28 @@ if response.url == "https://www.screener.in/dash/":
  
         # Create SQLAlchemy engine
         engine = create_engine(db_string)
+
+        # create table before inserting
+        metadata = MetaData()
+        my_table = Table('profit_loss' , metadata , 
+                        Column('year',  Integer, primary_key=True ) , 
+                        Column('Sales +' , String),
+                        Column('Expenses +' , String),
+                        Column('Operating Profit' , String),
+                        Column('OPM %' , String),
+                        Column('Other Income +' , String),
+                        Column('Interest' , String),
+                        Column('Depreciation' , String),
+                        Column('Profit before tax' , String),
+                        Column('Tax %' , String),
+                        Column('Net Profit +' , String),
+                        Column('EPS in Rs' , String),
+                        Column('Dividend Payout %' , String),
+                        Column('stock name' , String),
+        )
+        metadata.create_all(engine)
+        # write into table
+        df.to_sql('profit_loss' , engine , if_exists='append' , index=False)
 
         try:
            df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
