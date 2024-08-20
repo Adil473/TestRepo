@@ -73,9 +73,23 @@ if response.url == "https://www.screener.in/dash/":
  
         # Create SQLAlchemy engine
         engine = create_engine(db_string)
- 
+
+        try:
+           df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='Year')
+           with engine.connect() as connection:
+              alter_table_sql = """
+               ALTER TABLE profit_loss_data
+               ADD PRIMARY KEY (Year);
+              """
+              connection.execute(text(alter_table_sql))
+           print("Data saved to MySQL with id column set as primary key")
+        except SQLAlchemyError as e:
+           print(f"Error: {e}")
+        finally:
+           engine.dispose()
+       
         # Assuming df is your DataFrame
-        df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace')
+        # df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace')
         print("data written successfully")
 
         
