@@ -80,7 +80,7 @@ if response.url == "https://www.screener.in/dash/":
         # create table before inserting
         metadata = MetaData()
         my_table = Table('profit_loss' , metadata , 
-                        Column('year',  Integer, primary_key=True ) , 
+                        Column('year',  String, primary_key=True ) , 
                         Column('Sales' , String),
                         Column('Expenses' , String),
                         Column('Operating Profit' , String),
