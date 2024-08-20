@@ -45,7 +45,7 @@ if response.url == "https://www.screener.in/dash/":
         table = section.find('table' , {'class': 'data-table responsive-text-nowrap'})
 
         headers = [th.text.strip() for th in table.find_all('th')]
-        headers[0] = 'Dates'
+        headers[0] = 'year'
         print(headers)
         rows = table.find_all('tr')
         row_data = []
@@ -77,11 +77,10 @@ if response.url == "https://www.screener.in/dash/":
         engine = create_engine(db_string)
 
         try:
-           df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='Year')
+           df.to_sql('profit_loss_data', con=engine, index=True, if_exists='replace', index_label='year')
            with engine.connect() as connection:
               alter_table_sql = """
-               ALTER TABLE profit_loss_data
-               ADD PRIMARY KEY (Year);
+               ALTER TABLE profit_loss_data ADD PRIMARY KEY ('year');
               """
               connection.execute(text(alter_table_sql))
            print("Data saved to MySQL with id column set as primary key")
