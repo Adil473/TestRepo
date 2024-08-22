@@ -32,6 +32,6 @@ chmod +x credentials/secrets.sh
 
 ls -l credentials
 
-# cat credentials/secrets.sh
+cat credentials/secrets.sh
 echo "Fetched email: $EMAIL"
 echo "Fetched password: $PASSWORD"
