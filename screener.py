@@ -28,7 +28,8 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # driver = webdriver.Chrome(options=chrome_options)
 driver.implicitly_wait(10)
 #  =========================================================== #
-
+email = "vgjmunq5q@rskfc.com"
+password = "2B00A2E5"
 # email = os.getenv('VAULT_EMAIL')
 # password = os.getenv('VAULT_PASSWORD')
 print(email , password)
