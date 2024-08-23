@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
 
@@ -25,7 +24,6 @@ prefs = {
 }
 chrome_options.add_experimental_option("prefs", prefs)
 service = Service("/usr/local/bin/chromedriver")
-# service  = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 # driver = webdriver.Chrome(options=chrome_options)
 driver.implicitly_wait(10)
@@ -51,6 +49,9 @@ try:
     export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
     export_csv_button.click()
     time.sleep(25)
+
+    download_dir = current_dir
+    print("Files in download directory before wait:", os.listdir(download_dir))
 
 finally:
     driver.quit()
