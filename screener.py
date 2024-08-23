@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import os
 
@@ -23,8 +24,8 @@ prefs = {
     "safebrowsing.enabled": True
 }
 chrome_options.add_experimental_option("prefs", prefs)
-service = Service('/usr/local/bin/chromedriver-linux64/chromedriver')
-
+# service = Service('/usr/local/bin/chromedriver-linux64/chromedriver')
+service  = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 # driver = webdriver.Chrome(options=chrome_options)
 driver.implicitly_wait(10)
