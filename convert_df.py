@@ -6,15 +6,12 @@ def read_profit_and_loss_tab(file_name):
    if file_name:
        # Read the Excel file
        try:
-          # Start an instance of Excel
-            xlapp = win32com.client.DispatchEx("Excel.Application")
-            # Open the workbook in said instance of Excel
-            wb = xlapp.Workbooks.Open("Reliance Industr.xlsx")
-            # Refresh all data connections.
-            wb.RefreshAll()
-            wb.Save()
+          xlapp = win32com.client.DispatchEx("Excel.Application")
+          wb = xlapp.Workbooks.Open("Reliance Industr.xlsx")
+          wb.RefreshAll()
+          wb.Save()
             # Quit
-            xlapp.Quit()
+          xlapp.Quit()
 
           
            # Load only the "Profit and Loss" sheet
