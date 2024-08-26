@@ -6,15 +6,13 @@ def read_profit_and_loss_tab(file_name):
    if file_name:
        # Read the Excel file
        try:
-          xlapp = win32com.client.DispatchEx("Excel.Application")
-          wb = xlapp.Workbooks.Open("Reliance Industr.xlsx")
-          wb.RefreshAll()
-          wb.Save()
+           xlapp = win32com.client.DispatchEx("Excel.Application")
+           wb = xlapp.Workbooks.Open("Reliance Industr.xlsx")
+           wb.RefreshAll()
+           wb.Save()
             # Quit
-          xlapp.Quit()
-
-          
-           # Load only the "Profit and Loss" sheet
+           xlapp.Quit()
+          # Load only the "Profit and Loss" sheet
            profit_and_loss_df = pd.read_excel(file_name, sheet_name="Profit & Loss")
            # Perform any additional processing here if needed
            print("Profit and Loss Data:")
