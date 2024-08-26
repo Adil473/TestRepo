@@ -24,6 +24,8 @@ export VAULT_TOKEN='myroot'
 EMAIL=$(vault kv get -field=email secret/my_secret)
 PASSWORD=$(vault kv get -field=password secret/my_secret)
 
+mkdir -p credentials
+chmod +x credentials
 echo "$EMAIL" > credentials/email.txt
 echo "$PASSWORD" > credentials/password.txt
 
