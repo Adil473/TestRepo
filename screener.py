@@ -30,9 +30,15 @@ driver.implicitly_wait(10)
 #  =========================================================== #
 email = "vgjmunq5q@rskfc.com"
 password = "2B00A2E5"
-# email = os.getenv('VAULT_EMAIL')
-# password = os.getenv('VAULT_PASSWORD')
 print(email , password)
+email = os.getenv('EMAIL')
+password = os.getenv('PASSWORD')
+print(email , password)
+
+postgres_user = os.getenv('PG_USER')
+postgres_pass = os.getenv('PG_PASS')
+print("postgres user: ", postgres_user)
+print("postgres pass: ", postgres_pass)
 try:
     driver.get("https://www.screener.in/login/")
     time.sleep(5)
