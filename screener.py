@@ -34,7 +34,7 @@ print(email , password)
 email = os.getenv('EMAIL')
 password = os.getenv('PASSWORD')
 print(email , password)
-
+company_names = ['Reliance Industries Ltd' , 'HDFC Bank Ltd' , 'Nestle India Ltd' , 'Adani Enterprises Ltd']
 postgres_user = os.getenv('PG_USER')
 postgres_pass = os.getenv('PG_PASS')
 print("postgres user: ", postgres_user)
@@ -50,12 +50,15 @@ try:
     password_input.send_keys(Keys.RETURN)
 
     time.sleep(5)
-
-    driver.get("https://www.screener.in/company/RELIANCE/consolidated/")
-    time.sleep(5)
-    export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
-    export_csv_button.click()
-    time.sleep(25)
+    for comp_name in company_names:
+        search_box = driver.find_element(By.XPATH , '//*[@id="desktop-search"]/div/input')
+        search_box.send_keys(f"{comp_name}")
+        search_box.send_keys(Keys.ENTER)
+        # driver.get(f"https://www.screener.in/company/{comp_name}/consolidated/")
+        time.sleep(8)
+        export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
+        export_csv_button.click()
+        time.sleep(12)
 
     download_dir = current_dir
     print("Files in download directory before wait:", os.listdir(download_dir))
