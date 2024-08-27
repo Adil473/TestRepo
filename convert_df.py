@@ -1,38 +1,34 @@
 import pandas as pd
-import os
-import win32com.client
-# import xlwings as xw
+import os            
 
-def read_profit_and_loss_tab(file_name):
-   if file_name:
-       # Read the Excel file
-       try:
-           xlapp = win32com.client.DispatchEx("Excel.Application")
-           wb = xlapp.Workbooks.Open("Reliance Industr.xlsx")
-           xlapp.Visible = False
-           wb.RefreshAll()
-           wb.Save()
-            # Quit
-           xlapp.Quit()
+def read_profit_and_loss_tab(file_name):   
+    if file_name:
+        try:
+            # Load only the "Profit and Loss" sheet
+            profit_and_loss_df = pd.read_excel(file_name, sheet_name="Data Sheet" , usecols='A:K' , skiprows=15 , nrows=15)
+            # print(profit_and_loss_df)
+            # Perform any additional processing here if needed
+            profit_and_loss_df.set_index("Report Date" , inplace=True)
+            # print(profit_and_loss_df)
+            profit_and_loss_df = profit_and_loss_df.transpose()
+            profit_and_loss_df["company"] = file_name.strip(".xlsx")
 
-           # workbook = xw.Book("Reliance Industr.xlsx")
-           # # Refresh all data connections in the workbook
-           # for connection in workbook.api.Connections:
-           #     connection.refresh()
+            print(f"Profit and Loss Data {file_name}:")
+            print(profit_and_loss_df)
 
-           # Save and close the updated workbook
-           # workbook.save("Reliance Industr.xlsx")
-           # workbook.close()
-          
-           # Load only the "Profit and Loss" sheet
-           profit_and_loss_df = pd.read_excel(file_name, sheet_name="Profit & Loss")
-           # Perform any additional processing here if needed
-           print("Profit and Loss Data:")
-           print(profit_and_loss_df.head())
-       except Exception as e:
-           print(f"Error reading Excel file or extracting Profit and Loss tab: {e}")
-   else:
-       print(f"File {file_name} not found")
+            try:
+                profit_and_loss_df.to_csv('profit_loss.csv', mode='x' , index=True, header=True)
+            except FileExistsError:
+                profit_and_loss_df.to_csv('profit_loss.csv', mode='a', index=True, header=False)
+
+        except Exception as e:
+            print(f"Error reading Excel file or extracting Profit and Loss tab: {e}")
+    else:
+        print(f"File {file_name} not found")
 if __name__ == '__main__':
-   file_name = "Reliance Industr.xlsx"
-   read_profit_and_loss_tab(file_name)
+    company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Nestle India.xlsx" , "Adani Enterp.xlsx"]
+    # company_names = ["HDFC Bank.xlsx"]
+    for file_name in company_names:
+        read_profit_and_loss_tab(file_name)
+
+
