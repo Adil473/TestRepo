@@ -29,7 +29,6 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.implicitly_wait(10)
 #  =========================================================== #
 
-print(email , password)
 email = os.getenv('EMAIL')
 password = os.getenv('PASSWORD')
 print(email , password)
