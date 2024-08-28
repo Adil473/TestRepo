@@ -28,8 +28,7 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 # driver = webdriver.Chrome(options=chrome_options)
 driver.implicitly_wait(10)
 #  =========================================================== #
-email = "vgjmunq5q@rskfc.com"
-password = "2B00A2E5"
+
 print(email , password)
 email = os.getenv('EMAIL')
 password = os.getenv('PASSWORD')
@@ -39,6 +38,8 @@ postgres_user = os.getenv('PG_USER')
 postgres_pass = os.getenv('PG_PASS')
 print("postgres user: ", postgres_user)
 print("postgres pass: ", postgres_pass)
+email = "vgjmunq5q@rskfc.com"
+password = "2B00A2E5"
 try:
     driver.get("https://www.screener.in/login/")
     time.sleep(5)
