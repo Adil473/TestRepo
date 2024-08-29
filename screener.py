@@ -32,7 +32,8 @@ driver.implicitly_wait(10)
 email = os.getenv('EMAIL')
 password = os.getenv('PASSWORD')
 print(email , password)
-company_names = ['Reliance Industries Ltd' , 'HDFC Bank Ltd' , 'Nestle India Ltd' , 'Adani Enterprises Ltd']
+# company_names = ['Reliance Industries Ltd' , 'HDFC Bank Ltd' , 'Nestle India Ltd' , 'Adani Enterprises Ltd']
+company_names = ['RELIANCE' , 'HDFCBANK' , 'TATAMOTORS' , 'ADANIENT']
 postgres_user = os.getenv('PG_USER')
 postgres_pass = os.getenv('PG_PASS')
 print("postgres user: ", postgres_user)
@@ -51,14 +52,14 @@ try:
 
     time.sleep(5)
     for comp_name in company_names:
-        search_box = driver.find_element(By.XPATH , '//*[@id="desktop-search"]/div/input')
-        search_box.send_keys(Keys.CONTROL + "a")
-        search_box.send_keys(Keys.DELETE)
-        search_box.send_keys(f"{comp_name}")
-        time.sleep(7)
-        search_box.send_keys(Keys.ENTER)
-        # driver.get(f"https://www.screener.in/company/{comp_name}/consolidated/")
-        time.sleep(10)
+        # search_box = driver.find_element(By.XPATH , '//*[@id="desktop-search"]/div/input')
+        # search_box.send_keys(Keys.CONTROL + "a")
+        # search_box.send_keys(Keys.DELETE)
+        # search_box.send_keys(f"{comp_name}")
+        # time.sleep(7)
+        # search_box.send_keys(Keys.ENTER)
+        driver.get(f"https://www.screener.in/company/{comp_name}/consolidated/")
+        time.sleep(12)
         # export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
         export_csv_button = WebDriverWait(driver, 100).until(
         EC.element_to_be_clickable((By.XPATH, '//*[contains(concat( " ", @class, " " ), concat( " ", "icon-download", " " ))]'))
