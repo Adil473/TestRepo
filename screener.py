@@ -52,11 +52,17 @@ try:
     time.sleep(5)
     for comp_name in company_names:
         search_box = driver.find_element(By.XPATH , '//*[@id="desktop-search"]/div/input')
+        search_box.send_keys(Keys.CONTROL + "a")
+        search_box.send_keys(Keys.DELETE)
         search_box.send_keys(f"{comp_name}")
+        time.sleep(3)
         search_box.send_keys(Keys.ENTER)
         # driver.get(f"https://www.screener.in/company/{comp_name}/consolidated/")
-        time.sleep(8)
-        export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
+        time.sleep(10)
+        # export_csv_button = driver.find_element(By.XPATH , '//*[@id="top"]/div[1]/form/button')
+        export_csv_button = WebDriverWait(driver, 100).until(
+        EC.element_to_be_clickable((By.XPATH, '//*[contains(concat( " ", @class, " " ), concat( " ", "icon-download", " " ))]'))
+        )
         export_csv_button.click()
         time.sleep(12)
 
