@@ -55,7 +55,7 @@ try:
         search_box.send_keys(Keys.CONTROL + "a")
         search_box.send_keys(Keys.DELETE)
         search_box.send_keys(f"{comp_name}")
-        time.sleep(3)
+        time.sleep(7)
         search_box.send_keys(Keys.ENTER)
         # driver.get(f"https://www.screener.in/company/{comp_name}/consolidated/")
         time.sleep(10)
@@ -64,7 +64,7 @@ try:
         EC.element_to_be_clickable((By.XPATH, '//*[contains(concat( " ", @class, " " ), concat( " ", "icon-download", " " ))]'))
         )
         export_csv_button.click()
-        time.sleep(12)
+        time.sleep(15)
 
     download_dir = current_dir
     print("Files in download directory before wait:", os.listdir(download_dir))
