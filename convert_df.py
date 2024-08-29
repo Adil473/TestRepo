@@ -1,11 +1,13 @@
 import pandas as pd
 import os
+import openpyxl
 from sqlalchemy import create_engine
 from sqlalchemy import text
 def read_profit_and_loss_tab(file_name):   
     if file_name:
         try:
-            profit_and_loss_df = pd.read_excel(file_name, sheet_name="Data Sheet" , usecols='A:K' , skiprows=15 , nrows=15)
+            workbook = openpyxl.load_workbook(file_name, data_only=True)
+            profit_and_loss_df = pd.read_excel(file_name, sheet_name="Data Sheet" , usecols='A:K' , skiprows=15 , nrows=15 , engine='openpyxl')
             profit_and_loss_df.set_index("Report Date" , inplace=True)
             profit_and_loss_df = profit_and_loss_df.transpose()
             profit_and_loss_df["company"] = file_name.strip(".xlsx")
