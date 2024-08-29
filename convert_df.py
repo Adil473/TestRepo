@@ -21,7 +21,7 @@ def read_profit_and_loss_tab(file_name):
     else:
         print(f"File {file_name} not found")
 if __name__ == '__main__':
-    company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Nestle India.xlsx" , "Adani Enterp.xlsx"]
+    company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Tata Motors.xlsx" , "Adani Enterp.xlsx"]
     db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
     engine = create_engine(db_string)
     # company_names = ["HDFC Bank.xlsx"]
