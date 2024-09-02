@@ -6,6 +6,7 @@ from sqlalchemy import text
 def read_profit_and_loss_tab(file_name):   
     if file_name:
         try:
+            print("workbook created")
             workbook = openpyxl.load_workbook(file_name, data_only=True)
             profit_and_loss_df = pd.read_excel(file_name, sheet_name="Data Sheet" , usecols='A:K' , skiprows=15 , nrows=15 , engine='openpyxl')
             profit_and_loss_df.set_index("Report Date" , inplace=True)
@@ -15,7 +16,7 @@ def read_profit_and_loss_tab(file_name):
             print(f"Profit and Loss Data {file_name}:")
             print(profit_and_loss_df)
 
-            profit_and_loss_df.to_sql('profit_loss' , con=engine , if_exists='append' , index=True , index_label='Report Date')
+            # profit_and_loss_df.to_sql('profit_loss' , con=engine , if_exists='append' , index=True , index_label='Report Date')
             print("data written to postrges")
 
         except Exception as e:

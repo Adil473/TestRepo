@@ -2,3 +2,4 @@ selenium
 pandas
 sqlalchemy
 openpyxl
+psycopg2-binary
