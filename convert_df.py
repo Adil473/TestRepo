@@ -6,6 +6,7 @@ from sqlalchemy import text
 def read_profit_and_loss_tab(file_name):   
     if file_name:
         try:
+            print("workbook created")
             workbook = openpyxl.load_workbook(file_name, data_only=True)
             profit_and_loss_df = pd.read_excel(file_name, sheet_name="Data Sheet" , usecols='A:K' , skiprows=15 , nrows=15 , engine='openpyxl')
             profit_and_loss_df.set_index("Report Date" , inplace=True)
@@ -15,19 +16,20 @@ def read_profit_and_loss_tab(file_name):
             print(f"Profit and Loss Data {file_name}:")
             print(profit_and_loss_df)
 
-            profit_and_loss_df.to_sql('profit_loss' , con=engine , if_exists='append' , index=True , index_label='Report Date')
+            # profit_and_loss_df.to_sql('profit_loss' , con=engine , if_exists='append' , index=True , index_label='Report Date')
             print("data written to postrges")
 
         except Exception as e:
             print(f"Error reading Excel file or extracting Profit and Loss tab: {e}")
     else:
         print(f"File {file_name} not found")
-if __name__ == '__main__':
-    company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Tata Motors.xlsx" , "Adani Enterp.xlsx"]
-    db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
-    engine = create_engine(db_string)
-    # company_names = ["HDFC Bank.xlsx"]
-    for file_name in company_names:
-        read_profit_and_loss_tab(file_name)
+company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Tata Motors.xlsx" , "Adani Enterp.xlsx"]
+print("=======1========")
+# db_string = "postgresql+psycopg2://postgres:password@192.168.1.103:5432/sourcedb"
+# engine = create_engine(db_string)
+# company_names = ["HDFC Bank.xlsx"]
+for file_name in company_names:
+    print("file_name")
+    read_profit_and_loss_tab(file_name)
 
 
