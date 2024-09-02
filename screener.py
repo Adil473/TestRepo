@@ -31,7 +31,7 @@ driver.implicitly_wait(10)
 
 EMAIL = os.getenv('email')
 PASSWORD = os.getenv('password')
-print(email , password)
+print(EMAIL , PASSWORD)
 # company_names = ['Reliance Industries Ltd' , 'HDFC Bank Ltd' , 'Nestle India Ltd' , 'Adani Enterprises Ltd']
 company_names = ['RELIANCE' , 'HDFCBANK' , 'TATAMOTORS' , 'ADANIENT']
 postgres_user = os.getenv('PG_USER')
