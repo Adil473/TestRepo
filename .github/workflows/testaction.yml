@@ -13,5 +13,5 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run script
         run: python screener.py
-      - name: setup-chromedriver 
-        uses: nanasess/setup-chromedriver@v2.2.2
+      - name: Read data
+        run: python convert_df.py
