@@ -1,7 +1,17 @@
 on: push
 jobs:
-  first-job:
-    runs-on: windows-latest
+  run-script:
+    runs-on: ubuntu-latest
     steps:
-      - run: node --version
-      - run: npm --version
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run script
+        run: python script.py
+        name: setup-chromedriver 
+        uses: nanasess/setup-chromedriver@v2.2.2
