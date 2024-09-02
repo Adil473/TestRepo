@@ -12,6 +12,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Run script
-        run: python script.py
+        run: python screener.py
       - name: setup-chromedriver 
         uses: nanasess/setup-chromedriver@v2.2.2
