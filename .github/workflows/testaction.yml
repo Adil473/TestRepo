@@ -1,4 +1,9 @@
 on: push
+env:
+  email: ${{ secrets.EMAIL }}
+  password: ${{ secrets.PASSWORD }}
+  PG_USER: ${{ secrets.PG_USER }}
+  PG_PASS: ${{ secrets.PG_PASS }}
 jobs:
   run-script:
     runs-on: ubuntu-latest

@@ -29,8 +29,8 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.implicitly_wait(10)
 #  =========================================================== #
 
-email = os.getenv('EMAIL')
-password = os.getenv('PASSWORD')
+EMAIL = os.getenv('email')
+PASSWORD = os.getenv('password')
 print(email , password)
 # company_names = ['Reliance Industries Ltd' , 'HDFC Bank Ltd' , 'Nestle India Ltd' , 'Adani Enterprises Ltd']
 company_names = ['RELIANCE' , 'HDFCBANK' , 'TATAMOTORS' , 'ADANIENT']
@@ -38,16 +38,16 @@ postgres_user = os.getenv('PG_USER')
 postgres_pass = os.getenv('PG_PASS')
 print("postgres user: ", postgres_user)
 print("postgres pass: ", postgres_pass)
-email = "vgjmunq5q@rskfc.com"
-password = "2B00A2E5"
+# email = "vgjmunq5q@rskfc.com"
+# password = "2B00A2E5"
 try:
     driver.get("https://www.screener.in/login/")
     time.sleep(5)
     driver.fullscreen_window()
     email_input = driver.find_element(By.XPATH, '//*[@id="id_username"]')
-    email_input.send_keys(email)
+    email_input.send_keys(EMAIL)
     password_input = driver.find_element(By.XPATH, '//*[@id="id_password"]')
-    password_input.send_keys(password)
+    password_input.send_keys(PASSWORD)
     password_input.send_keys(Keys.RETURN)
 
     time.sleep(5)
