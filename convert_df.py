@@ -27,8 +27,9 @@ def read_profit_and_loss_tab(file_name):
 
 PG_USER = os.getenv('PG_USER')
 PG_PASS = os.getenv('PG_PASS')
+HOST_IP = os.getenv('HOST_IP')
 company_names = ["Reliance Industr.xlsx" , "HDFC Bank.xlsx" , "Tata Motors.xlsx" , "Adani Enterp.xlsx"]
-db_string = f"postgresql+psycopg2://{PG_USER}:{PG_PASS}@192.168.1.103:5432/sourcedb"
+db_string = f"postgresql+psycopg2://{PG_USER}:{PG_PASS}@{HOST_IP}/sourcedb"
 engine = create_engine(db_string)
 # company_names = ["HDFC Bank.xlsx"]
 for file_name in company_names:
