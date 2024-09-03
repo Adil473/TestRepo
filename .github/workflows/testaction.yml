@@ -4,6 +4,7 @@ env:
   password: ${{ secrets.PASSWORD }}
   PG_USER: ${{ secrets.PG_USER }}
   PG_PASS: ${{ secrets.PG_PASS }}
+  HOST_IP: ${{ secrets.HOST_IP }}
 jobs:
   run-script:
     runs-on: ubuntu-latest
